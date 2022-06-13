@@ -232,6 +232,7 @@ print_intro() {
     echo "-------------------- Bench.sh 脚本 作者: Teddysun 汉化:黑弩 -------------------"
     echo " 版本            : $(_green v2022-06-01)"
     echo " 使用方法              : $(_red "wget -qO- bench.sh | bash")"
+    echo ""
 }
 
 # Get System information
