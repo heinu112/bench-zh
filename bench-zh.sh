@@ -9,7 +9,6 @@
 #
 # 汉化:黑弩
 #
-
 trap _exit INT QUIT TERM
 
 _red() {
@@ -180,16 +179,16 @@ ipv4_info() {
     local country="$(wget -q -T10 -O- ipinfo.io/country)"
     local region="$(wget -q -T10 -O- ipinfo.io/region)"
     if [[ -n "$org" ]]; then
-        echo " Organization       : $(_blue "$org")"
+        echo " 组织       : $(_blue "$org")"
     fi
     if [[ -n "$city" && -n "country" ]]; then
-        echo " Location           : $(_blue "$city / $country")"
+        echo " 地点           : $(_blue "$city / $country")"
     fi
     if [[ -n "$region" ]]; then
-        echo " Region             : $(_yellow "$region")"
+        echo " 区域             : $(_yellow "$region")"
     fi
     if [[ -z "$org" ]]; then
-        echo " Region             : $(_red "No ISP detected")"
+        echo " 区域             : $(_red "No ISP detected")"
     fi
 }
 
@@ -226,11 +225,11 @@ install_speedtest() {
         mkdir -p speedtest-cli && tar zxf speedtest.tgz -C ./speedtest-cli && chmod +x ./speedtest-cli/speedtest
         rm -f speedtest.tgz
     fi
-    printf "%-18s%-18s%-20s%-12s\n" " Node Name" "Upload Speed" "Download Speed" "Latency"
+    printf "%-18s%-18s%-20s%-12s\n" " 节点名称" "上传速度" "下载速度" "延迟"
 }
 
 print_intro() {
-    echo "-------------------- A Bench.sh Script By Teddysun -------------------"
+    echo "-------------------- Bench.sh 脚本 作者: Teddysun 汉化:黑弩 -------------------"
     echo " 版本            : $(_green v2022-06-01)"
     echo " 使用方法              : $(_red "wget -qO- bench.sh | bash")"
 }
@@ -251,7 +250,7 @@ get_system_info() {
     swap=$( calc_size $swap )
     uswap=$( LANG=C; free | awk '/Swap/ {print $3}' )
     uswap=$( calc_size $uswap )
-    up=$( awk '{a=$1/86400;b=($1%86400)/3600;c=($1%3600)/60} {printf("%d days, %d hour %d min\n",a,b,c)}' /proc/uptime )
+    up=$( awk '{a=$1/86400;b=($1%86400)/3600;c=($1%3600)/60} {printf("%d 天, %d 小时 %d 分\n",a,b,c)}' /proc/uptime )
     if _exists "w"; then
         load=$( LANG=C; w | head -1 | awk -F'load average:' '{print $2}' | sed 's/^[ \t]*//;s/[ \t]*$//' )
     elif _exists "uptime"; then
@@ -318,11 +317,11 @@ print_io_test() {
     if [ ${freespace} -gt 1024 ]; then
         writemb=2048
         io1=$( io_test ${writemb} )
-        echo " I/O Speed(1st run) : $(_yellow "$io1")"
+        echo " I/O 速度(第一次测试) : $(_yellow "$io1")"
         io2=$( io_test ${writemb} )
-        echo " I/O Speed(2nd run) : $(_yellow "$io2")"
+        echo " I/O 速度(第二次测试) : $(_yellow "$io2")"
         io3=$( io_test ${writemb} )
-        echo " I/O Speed(3rd run) : $(_yellow "$io3")"
+        echo " I/O 速度(第三次测试) : $(_yellow "$io3")"
         ioraw1=$( echo $io1 | awk 'NR==1 {print $1}' )
         [ "`echo $io1 | awk 'NR==1 {print $2}'`" == "GB/s" ] && ioraw1=$( awk 'BEGIN{print '$ioraw1' * 1024}' )
         ioraw2=$( echo $io2 | awk 'NR==1 {print $1}' )
@@ -331,7 +330,7 @@ print_io_test() {
         [ "`echo $io3 | awk 'NR==1 {print $2}'`" == "GB/s" ] && ioraw3=$( awk 'BEGIN{print '$ioraw3' * 1024}' )
         ioall=$( awk 'BEGIN{print '$ioraw1' + '$ioraw2' + '$ioraw3'}' )
         ioavg=$( awk 'BEGIN{printf "%.1f", '$ioall' / 3}' )
-        echo " I/O Speed(average) : $(_yellow "$ioavg MB/s")"
+        echo " I/O 速度(平均) : $(_yellow "$ioavg MB/s")"
     else
         echo " $(_red "Not enough space for I/O Speed test!")"
     fi
@@ -343,9 +342,9 @@ print_end_time() {
     if [ ${time} -gt 60 ]; then
         min=$(expr $time / 60)
         sec=$(expr $time % 60)
-        echo " 完成了 in        : ${min} min ${sec} sec"
+        echo " 完成 用时:        : ${min} min ${sec} 秒"
     else
-        echo " 完成了 in        : ${time} sec"
+        echo " 完成 用时:        : ${time} 秒"
     fi
     date_time=$(date '+%Y-%m-%d %H:%M:%S %Z')
     echo " 时间戳          : $date_time"
