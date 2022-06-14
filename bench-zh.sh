@@ -296,14 +296,14 @@ print_system_info() {
         echo " VM-x/AMD-V         : $(_red "Disabled")"
     fi
     echo " 磁盘         : $(_yellow "$disk_total_size") $(_blue "($disk_used_size Used)")"
-    echo " Mem          : $(_yellow "$tram") $(_blue "($uram Used)")"
+    echo " 内存          : $(_yellow "$tram") $(_blue "($uram Used)")"
     if [ "$swap" != "0" ]; then
         echo " Swap         : $(_blue "$swap ($uswap Used)")"
     fi
     echo " 系统正常运行时间      : $(_blue "$up")"
     echo " 平均负载       : $(_blue "$load")"
     echo " 系统                 : $(_blue "$opsy")"
-    echo " Arch               : $(_blue "$arch ($lbit Bit)")"
+    echo " 架构               : $(_blue "$arch ($lbit Bit)")"
     echo " 内核             : $(_blue "$kern")"
     echo " TCP CC             : $(_yellow "$tcpctrl")"
     echo " 虚拟化     : $(_blue "$virt")"
