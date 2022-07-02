@@ -283,7 +283,7 @@ print_system_info() {
         echo " CPU 核心: $(_blue "$cores")"
     fi
     if [ -n "$ccache" ]; then
-        echo " CPU 核心: $(_blue "$ccache")"
+        echo " CPU 缓存大小: $(_blue "$ccache")"
     fi
     if [ -n "$cpu_aes" ]; then
         echo " AES指令集: $(_green "开启")"
