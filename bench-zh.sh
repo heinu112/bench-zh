@@ -229,9 +229,10 @@ install_speedtest() {
 }
 
 print_intro() {
-    echo "-------------------- Bench.sh 脚本 作者: Teddysun 汉化:黑弩 -------------------"
-    echo " 版本            : $(_green v2022-06-01)\n"
-    echo " 使用方法              : $(_red "wget -qO- bench.sh | bash")\n"
+    echo "-------------------- 作者: Teddysun 汉化:黑弩 -------------------"
+    echo " 版本            : $(_green v2022-06-01)"
+    echo ""
+    echo " 使用方法              : $(_red "wget -qO- bench.sh | bash")"
 }
 
 # Get System information
@@ -286,14 +287,14 @@ print_system_info() {
         echo " CPU 核心          : $(_blue "$ccache")"
     fi
     if [ -n "$cpu_aes" ]; then
-        echo " AES-NI             : $(_green "Enabled")"
+        echo " AES指令集             : $(_green "开启")"
     else
-        echo " AES-NI             : $(_red "Disabled")"
+        echo " AES指令集             : $(_red "关闭")"
     fi
     if [ -n "$cpu_virt" ]; then
-        echo " VM-x/AMD-V         : $(_green "Enabled")"
+        echo " 虚拟机扩展         : $(_green "开启")"
     else
-        echo " VM-x/AMD-V         : $(_red "Disabled")"
+        echo " 虚拟机扩展         : $(_red "关闭")"
     fi
     echo " 磁盘         : $(_yellow "$disk_total_size") $(_blue "($disk_used_size Used)")"
     echo " 内存          : $(_yellow "$tram") $(_blue "($uram Used)")"
@@ -342,9 +343,9 @@ print_end_time() {
     if [ ${time} -gt 60 ]; then
         min=$(expr $time / 60)
         sec=$(expr $time % 60)
-        echo " 完成 用时:        : ${min} min ${sec} 秒"
+        echo " 用时:        : ${min} 分 ${sec} 秒"
     else
-        echo " 完成 用时:        : ${time} 秒"
+        echo " 用时:        : ${time} 秒"
     fi
     date_time=$(date '+%Y-%m-%d %H:%M:%S %Z')
     echo " 时间戳          : $date_time"
