@@ -179,16 +179,16 @@ ipv4_info() {
     local country="$(wget -q -T10 -O- ipinfo.io/country)"
     local region="$(wget -q -T10 -O- ipinfo.io/region)"
     if [[ -n "$org" ]]; then
-        echo " 组织       : $(_blue "$org")"
+        echo " 组织: $(_blue "$org")"
     fi
     if [[ -n "$city" && -n "country" ]]; then
-        echo " 地点           : $(_blue "$city / $country")"
+        echo " 地点: $(_blue "$city / $country")"
     fi
     if [[ -n "$region" ]]; then
-        echo " 区域             : $(_yellow "$region")"
+        echo " 区域: $(_yellow "$region")"
     fi
     if [[ -z "$org" ]]; then
-        echo " 区域             : $(_red "No ISP detected")"
+        echo " 区域: $(_red "No ISP detected")"
     fi
 }
 
