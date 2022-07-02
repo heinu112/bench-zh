@@ -230,9 +230,8 @@ install_speedtest() {
 
 print_intro() {
     echo "-------------------- 作者: Teddysun 汉化:黑弩 -------------------"
-    echo " 版本            : $(_green v2022-06-01)"
-    echo ""
-    echo " 使用方法              : $(_red "wget -qO- https://raw.githubusercontent.com/heinu112/bench-zh/main/bench-zh.sh | bash")"
+    echo " 版本: $(_green v2022-06-01)"
+    echo " 使用方法: $(_red "wget -qO- https://raw.githubusercontent.com/heinu112/bench-zh/main/bench-zh.sh | bash")"
 }
 
 # Get System information
@@ -274,40 +273,40 @@ get_system_info() {
 # Print System information
 print_system_info() {
     if [ -n "$cname" ]; then
-        echo " CPU 型号          : $(_blue "$cname")"
+        echo " CPU 型号: $(_blue "$cname")"
     else
-        echo " CPU 型号          : $(_blue "CPU model not detected")"
+        echo " CPU 型号: $(_blue "CPU model not detected")"
     fi
     if [ -n "$freq" ]; then
-        echo " CPU 核心          : $(_blue "$cores @ $freq MHz")"
+        echo " CPU 核心: $(_blue "$cores @ $freq MHz")"
     else
-        echo " CPU 核心          : $(_blue "$cores")"
+        echo " CPU 核心: $(_blue "$cores")"
     fi
     if [ -n "$ccache" ]; then
-        echo " CPU 核心          : $(_blue "$ccache")"
+        echo " CPU 核心: $(_blue "$ccache")"
     fi
     if [ -n "$cpu_aes" ]; then
-        echo " AES指令集             : $(_green "开启")"
+        echo " AES指令集: $(_green "开启")"
     else
-        echo " AES指令集             : $(_red "关闭")"
+        echo " AES指令集: $(_red "关闭")"
     fi
     if [ -n "$cpu_virt" ]; then
-        echo " 虚拟机扩展         : $(_green "开启")"
+        echo " 虚拟机扩展: $(_green "开启")"
     else
-        echo " 虚拟机扩展         : $(_red "关闭")"
+        echo " 虚拟机扩展: $(_red "关闭")"
     fi
-    echo " 磁盘         : $(_yellow "$disk_total_size") $(_blue "($disk_used_size Used)")"
-    echo " 内存          : $(_yellow "$tram") $(_blue "($uram Used)")"
+    echo " 磁盘: $(_yellow "$disk_total_size") $(_blue "($disk_used_size Used)")"
+    echo " 内存: $(_yellow "$tram") $(_blue "($uram Used)")"
     if [ "$swap" != "0" ]; then
-        echo " Swap         : $(_blue "$swap ($uswap Used)")"
+        echo " Swap: $(_blue "$swap ($uswap Used)")"
     fi
-    echo " 系统正常运行时间      : $(_blue "$up")"
-    echo " 平均负载       : $(_blue "$load")"
-    echo " 系统                 : $(_blue "$opsy")"
-    echo " 架构               : $(_blue "$arch ($lbit Bit)")"
-    echo " 内核             : $(_blue "$kern")"
-    echo " TCP CC             : $(_yellow "$tcpctrl")"
-    echo " 虚拟化     : $(_blue "$virt")"
+    echo " 系统正常运行时间: $(_blue "$up")"
+    echo " 平均负载: $(_blue "$load")"
+    echo " 系统: $(_blue "$opsy")"
+    echo " 架构: $(_blue "$arch ($lbit Bit)")"
+    echo " 内核: $(_blue "$kern")"
+    echo " CC防护: $(_yellow "$tcpctrl")"
+    echo " 虚拟化: $(_blue "$virt")"
 }
 
 print_io_test() {
@@ -343,12 +342,12 @@ print_end_time() {
     if [ ${time} -gt 60 ]; then
         min=$(expr $time / 60)
         sec=$(expr $time % 60)
-        echo " 用时:        : ${min} 分 ${sec} 秒"
+        echo " 用时: ${min} 分 ${sec} 秒"
     else
-        echo " 用时:        : ${time} 秒"
+        echo " 用时: ${time} 秒"
     fi
     date_time=$(date '+%Y-%m-%d %H:%M:%S %Z')
-    echo " 时间戳          : $date_time"
+    echo " 时间戳: $date_time"
 }
 
 ! _exists "wget" && _red "Error: wget command not found.\n" && exit 1
