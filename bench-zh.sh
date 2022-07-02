@@ -232,7 +232,7 @@ print_intro() {
     echo "-------------------- 作者: Teddysun 汉化:黑弩 -------------------"
     echo " 版本            : $(_green v2022-06-01)"
     echo ""
-    echo " 使用方法              : $(_red "wget -qO- bench.sh | bash")"
+    echo " 使用方法              : $(_red "wget -qO- https://raw.githubusercontent.com/heinu112/bench-zh/main/bench-zh.sh | bash")"
 }
 
 # Get System information
